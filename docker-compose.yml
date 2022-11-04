@@ -1,0 +1,26 @@
+version: '2.12'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+   
+
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD : abc123
+      POSTGRES_ROOT_PASSWORD : abc123
+    volumes:
+      - .dbdata:/var/lib/postgresql
+    ports:
+      - "54320:5432"
+
